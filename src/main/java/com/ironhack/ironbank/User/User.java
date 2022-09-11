@@ -18,8 +18,8 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-    private String name;
     @OneToMany (mappedBy = "primaryOwner")
             @JsonIgnore
     private List<Account> ownedAccounts;
+    private String name;
 }
