@@ -1,4 +1,4 @@
 package com.ironhack.ironbank.Account;
 
-public class StudentCheckingAccount extends Account{
+public class StudentCheckingAccount extends CheckingAccount{
 }
