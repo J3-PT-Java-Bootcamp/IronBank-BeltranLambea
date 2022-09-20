@@ -8,7 +8,6 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -19,6 +18,4 @@ public class CheckingAccount extends Account{
     @ManyToOne
     @JoinColumn(name = "secondaryOwner_id")
     private User secondaryOwner;
-
-    private static final BigDecimal penaltyFee = BigDecimal.valueOf(40);
 }

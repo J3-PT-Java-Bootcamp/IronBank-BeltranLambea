@@ -3,6 +3,7 @@ package com.ironhack.ironbank.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ironhack.ironbank.Account.Account;
 import com.ironhack.ironbank.Account.CheckingAccount;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "owner")
 public class User {
     @Id
@@ -29,4 +31,8 @@ public class User {
     private List<CheckingAccount> secondaryOwnedAccounts;
 
     private String name;
+
+    public User(String name) {
+        this.name = name;
+    }
 }

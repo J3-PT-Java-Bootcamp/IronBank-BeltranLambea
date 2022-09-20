@@ -1,9 +1,7 @@
 package com.ironhack.ironbank.Account;
 
 import com.ironhack.ironbank.User.User;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -20,9 +18,10 @@ public class Account {
     @ManyToOne
             @JoinColumn(name = "owner_id")
     private User primaryOwner;
+    @Column(name = "name")
     private String name;
     private BigDecimal balance;
-    private BigDecimal penaltyFee;
+    private static final BigDecimal penaltyFee = BigDecimal.valueOf(40);
     private Instant creationDate;
     private Status status;
 }
