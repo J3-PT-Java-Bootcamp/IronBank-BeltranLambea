@@ -3,10 +3,7 @@ package com.ironhack.ironbank.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ironhack.ironbank.Account.Account;
 import com.ironhack.ironbank.Account.CheckingAccount;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,19 +12,22 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@ToString
 @Table(name = "owner")
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long id;
 
     @OneToMany (mappedBy = "primaryOwner")
             @JsonIgnore
+    @ToString.Exclude
     private List<Account> ownedAccounts;
 
     @OneToMany (mappedBy = "secondaryOwner")
     @JsonIgnore
+    @ToString.Exclude
     private List<CheckingAccount> secondaryOwnedAccounts;
 
     private String name;
@@ -35,4 +35,11 @@ public class User {
     public User(String name) {
         this.name = name;
     }
+
+    public User(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+
 }

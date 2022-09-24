@@ -18,4 +18,34 @@ public class CheckingAccount extends Account{
     @ManyToOne
     @JoinColumn(name = "secondaryOwner_id")
     private User secondaryOwner;
+
+    public CheckingAccount(User primaryOwner, String name, String secretKey, User secondaryOwner) {
+        super(primaryOwner, name);
+        this.secretKey = secretKey;
+        this.secondaryOwner = secondaryOwner;
+    }
+
+    public CheckingAccount(User primaryOwner, String name, String secretKey) {
+        super(primaryOwner, name);
+        this.secretKey = secretKey;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

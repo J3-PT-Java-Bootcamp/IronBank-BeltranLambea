@@ -1,11 +1,15 @@
 package com.ironhack.ironbank.User;
 
+import com.ironhack.ironbank.Account.Account;
+import com.ironhack.ironbank.Account.CheckingAccount;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -30,5 +34,17 @@ public class AccountHolder extends User{
         super(name);
         this.dateOfBirth = dateOfBirth;
         this.address = address;
+        LocalDate actualDate = LocalDate.now();
+        this.age = dateOfBirth.until(actualDate).getYears();
     }
+
+    public AccountHolder(Long id,  String name, LocalDate dateOfBirth, Address address) {
+        super(id, name);
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        LocalDate actualDate = LocalDate.now();
+        this.age = dateOfBirth.until(actualDate).getYears();
+    }
+
+
 }

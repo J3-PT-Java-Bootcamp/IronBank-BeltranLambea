@@ -18,8 +18,14 @@ public class CreateUser {
         User user;
 
         switch(userType) {
-            case 1 -> user = new AccountHolder(request.name(), request.dateOfBirth(), request.address());
-            case 2 -> user = new ThirdParty(request.name(), request.hashedKey());
+            case 1 -> {
+                user = new AccountHolder(request.name(), request.dateOfBirth(), request.address());
+                userRepository.save(user);
+            }
+            case 2 -> {
+                user = new ThirdParty(request.name(), request.hashedKey());
+                userRepository.save(user);
+            }
             default -> throw new IllegalStateException("Unexpected value: " + userType);
         }
         return user;
